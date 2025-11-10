@@ -34,4 +34,37 @@ public static void main (String [] args){
     public static void main(String [] args){
     List<String> names= Arrays.asList("Brijesh","Aniket","Koushik");
    names.forEach( n-> Sytem.out.println(" "));
+   
    }
+
+### Built in Java Functional Interface
+* Java has a set of pre defined functional interface supported by <ins>java.util.function </ins>
+* <b> Predicate </b> -> Tests a condition and returns a boolean
+  - Predicate is used for decision making
+  - It is used to decide what stays in the pipeline
+  - Streams automatically appply without creating a copy in the collection
+* <b> Consumer </b> -> Consume a value and performs an operation but returns nothing
+  - Is the terminal stage of an operation
+  - Typically printing, saving, logging
+  - 
+* <b> Suplier </b> -> Suplies or Produces a an output , no input required
+   - Suppliers come into play when you need to generate or provide values — often in stream sources or defaults.
+   - 
+* <b> Function </b> -> Takes one input and returns a result.
+  - Deals with Transform logic
+  - Used in Map(),flatMap() and collect()
+
+
+```
+| Root Type         | Signature           | Return Type     | Typical Use           | Example Stream Op           |
+| ----------------- | ------------------- | --------------- | --------------------- | --------------------------- |
+| **Predicate<T>**  | `boolean test(T t)` | `boolean`       | Filter / Condition    | `filter()`                  |
+| **Function<T,R>** | `R apply(T t)`      | Output value    | Transform / Map       | `map()`                     |
+| **Consumer<T>**   | `void accept(T t)`  | None            | Action / Effect       | `forEach()`                 |
+| **Supplier<T>**   | `T get()`           | Value generator | Data source / Default | `generate()`, `orElseGet()` |
+
+```
+
+
+
+  

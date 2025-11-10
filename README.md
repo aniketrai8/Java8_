@@ -64,6 +64,17 @@ public static void main (String [] args){
 | **Supplier<T>**   | `T get()`           | Value generator | Data source / Default | `generate()`, `orElseGet()` |
 
 ```
+### Thinking Pattern ->
+```
+| Goal                                        | Which Interface                           | Why                       | Example                                    |
+| ------------------------------------------- | ----------------------------------------- | ------------------------- | ------------------------------------------ |
+| You need to **check** a condition           | `Predicate<T>`                            | Returns boolean           | `filter(x -> x > 0)`                       |
+| You need to **transform** data              | `Function<T,R>`                           | Maps T → R                | `map(String::length)`                      |
+| You need to **perform an action**           | `Consumer<T>`                             | Executes logic, no return | `forEach(System.out::println)`             |
+| You need to **generate** or **supply** data | `Supplier<T>`                             | No input, returns value   | `Stream.generate(() -> UUID.randomUUID())` |
+| You need to **merge** two things            | `BinaryOperator<T>` / `BiFunction<T,U,R>` | Combines data             | `reduce(Integer::sum)`                     |
+| You need to **compare** two things          | `BiPredicate<T,U>`                        | Boolean on two inputs     | `(x, y) -> x.equals(y)`                    |
+```
 
 
 

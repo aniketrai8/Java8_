@@ -48,9 +48,28 @@ public static void main (String [] args){
   - Predicate is used for decision making
   - It is used to decide what stays in the pipeline
   - Streams automatically appply without creating a copy in the collection
+  - A Typical use of the Predicate lambda is to filter a collection of values.
+```
+List<String> names= Arrays.asList("Angela","Aaron","Bob","Clarie");
+
+List<string> namesWithA  = names.stream()
+      .filter(name -> name.startsWith("A"))
+      .collect(Collector.toList());
+```
 * <b> Consumer </b> -> Consume a value and performs an operation but returns nothing
   - Is the terminal stage of an operation
   - Typically printing, saving, logging
+  - There are also specialized versions of The consumer - DoubleConsumer, IntConsumer and LongConsumer - that recieves primitive values as arguments.
+ 
+    ```
+    Map<String,Integer> ages= new HasHmap<>();
+    ages.put("John",24);
+    ages.put("Freddy",31);
+    ages.put("Johanes", 33);
+
+    ages.forEach((name,age)-> System.out.println(name+ "is" +age + "years old"));
+
+    ```
   - 
 * <b> Suplier </b> -> Suplies or Produces a an output , no input required
    - Suppliers come into play when you need to generate or provide values — often in stream sources or defaults.
@@ -58,6 +77,18 @@ public static void main (String [] args){
 * <b> Function </b> -> Takes one input and returns a result.
   - Deals with Transform logic
   - Used in Map(),flatMap() and collect()
+ 
+* <b>Operators</b>
+ - Operators are special cases of a function that recieves and returns the same value type. The Unary operator interface recives a single argument.
+ - There are exists Binaryoperators which is mostly used as reduction operations.
+```
+List<Integer> values= Arrays.asList(3,4,5,6);
+
+int sum = values.stream()
+    .reduce(0, (i1,i2) -> i1+i2);
+
+```
+  
 
 
 ```
@@ -82,5 +113,28 @@ public static void main (String [] args){
 ```
 
 
+* <ins><B> Optional <T> </b> </ins>
+- Before Java8 developers has to carefully validate values because of the possiblity of throwing the NullPointerException.
+- Java 8 Optional class to handle situation there was a possiblity of getting an NPE
+- it can return a value of this object if this value is not a null.
 
+
+  Ex- Here how to return an Optional with a speicfic value or an empty Optional. if the paramater is full
+  ```
   
+  Optional<String> optional = Optional.ofNullable(getString());
+  ```
+  Ex - Assume we have an object of type User that has a fields of Type Address with a street of type String and we need to return a value of the stret if it exists or a default value
+  if the street is null.
+  ```
+  Optional<User> user= Optional.ofNullable(getUser())l
+  String result = user
+  .map(User:: getAddress)
+  .map(Address:: getStreet)
+  .orElse("not specified");
+  ```
+
+  ### Streams
+  * One of the major new feathures in Java 8 was is the introduction of the Stream Functionality
+  * It is cotained within the library - java.util.streams
+  * A stream() dedault method is added to the collection Interface and allows xreating a Stream<T> using any collection as an element source

@@ -10,6 +10,11 @@ public static void main(String[] args){
        return a.compareTo(b);
 });
 ```
+
+### @FunctionalInterface
+- It is a recommended practise that all Functional Interface have an Informative @FunctionalInterface Annotation. That communicates the purpose of the the interface, and also allows the compiler to generate an error if the annoted class iteerface does not satisfy the condition.
+- An interface is a single abstract method is a functional interface, and its implemeneted may be treated as lambda expression.
+- 
 <b>In Java 8 </b>
 ```
 public static void main (String [] args){

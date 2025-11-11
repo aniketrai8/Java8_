@@ -98,6 +98,9 @@ int sum = values.stream()
 | **Function<T,R>** | `R apply(T t)`      | Output value    | Transform / Map       | `map()`                     |
 | **Consumer<T>**   | `void accept(T t)`  | None            | Action / Effect       | `forEach()`                 |
 | **Supplier<T>**   | `T get()`           | Value generator | Data source / Default | `generate()`, `orElseGet()` |
+| **Comparator<T>** | '                   | Custom Sorting  |                       | 'sorted()'                  |
+| **BinaryOperator<T>|                    | Combine values  |                       | 'reduce()                   |
+
 
 ```
 ### Thinking Pattern ->
@@ -138,3 +141,20 @@ int sum = values.stream()
   * One of the major new feathures in Java 8 was is the introduction of the Stream Functionality
   * It is cotained within the library - java.util.streams
   * A stream() dedault method is added to the collection Interface and allows xreating a Stream<T> using any collection as an element source
+ 
+  * Explanative Line -> A Stream is a sequenxw that supports functional-style operations on collections or data sources
+  * Stream is like a pipline through which data flows- at each stage you can - <U> Transform </u> <U> Filter</u> <U> Sort</u> <u> Collect</u>
+  * Streams is a squence of elements that supports functional-style operations on colections or data sources.
+  ```
+  names.stream()
+        .filter(n->n.startWith("A"))
+        .map(String::toUpperCase)
+        .sorted()
+        .forEach(System.out::println);
+  
+  ```
+  * A Stream doesnt store data - Its a view over a data source - unlike a collection which Stores Data
+  * Lazy Evaluation - Intermediate operations map(), filter() , sorted(), distinct() are not executed until a terminal operation runs
+  * Can easily process data in parallel using .parallelStream() - bcoz it is built in rather than Collections where it is manual
+  * Streams are compared opposite to Colletcions 
+    

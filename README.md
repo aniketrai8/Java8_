@@ -120,6 +120,7 @@ int sum = values.stream()
 - Before Java8 developers has to carefully validate values because of the possiblity of throwing the NullPointerException.
 - Java 8 Optional class to handle situation there was a possiblity of getting an NPE
 - it can return a value of this object if this value is not a null.
+- Another usecase of Optional is changing NPE with another exception.
 
 
   Ex- Here how to return an Optional with a speicfic value or an empty Optional. if the paramater is full
@@ -129,6 +130,24 @@ int sum = values.stream()
   ```
   Ex - Assume we have an object of type User that has a fields of Type Address with a street of type String and we need to return a value of the stret if it exists or a default value
   if the street is null.
+
+  <ins>Without Java 8</ins>
+  
+  ```
+   User user = getUser();
+  if(user!= null){
+    Address address = user.getAddress();
+  if(address != null){
+    String street = address.getStreet();
+    if(street!= null)
+      return street;
+  }}
+  }
+   return "not specifed"
+  ```
+
+
+<ins> With Java </ins>
   ```
   Optional<User> user= Optional.ofNullable(getUser())l
   String result = user
@@ -136,6 +155,26 @@ int sum = values.stream()
   .map(Address:: getStreet)
   .orElse("not specified");
   ```
+
+<ins> To catch a NullPointer and return an exception without </ins>
+```
+String value= null;
+String result = " ";
+try{
+  result= value.toUpperCase();
+} catch(NullPointerException exception){
+ throw new CustomException();
+}
+```
+<ins> Wiht Java 8 </ins>
+```
+String value = null;
+Optional<String> valueOpt = Optional.ofNullable(value); //since the value is null we return an empty Optional class
+String result= valueOpt.orElseThrow(CustomException::new).toUpperCase(); /
+/since its an empty Optional class it never progress more in the pipeline with the Uppercase function and uses  the Throw function to return error
+```
+* We used the map method to convert results of calling the getAddress() to the Optional<Address> and to getStreet() to Optional<Street>.
+* If any of these methods return null the map() methof would return an empty O[tional.
 
   ### Streams
   * One of the major new feathures in Java 8 was is the introduction of the Stream Functionality

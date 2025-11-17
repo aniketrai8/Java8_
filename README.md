@@ -195,5 +195,29 @@ String result= valueOpt.orElseThrow(CustomException::new).toUpperCase(); /
   * A Stream doesnt store data - Its a view over a data source - unlike a collection which Stores Data
   * Lazy Evaluation - Intermediate operations map(), filter() , sorted(), distinct() are not executed until a terminal operation runs
   * Can easily process data in parallel using .parallelStream() - bcoz it is built in rather than Collections where it is manual
-  * Streams are compared opposite to Colletcions 
+  * Streams are compared opposite to Colletcions
+  * Important Point about Streams are that JAVA 8 Streams cant be reused. It would return an IllegalStateException.
+  * We can only use one terminus operation per stream.
+    Example ->
+    
+        ```
+        List<String> list = Arrays.asList("abc1", "abc2", "abc3");
+        long size = list.stream().skip(1)
+        .map(element -> element.substring(0,3)).sorted().count();
+        ```
+      <ins>Output</ins>
+      * The first skip operation abc1 is being skipped. With remaining that abc2 and abc3.
+      * The map() element starts at 0 and maps till 3 index si both the remaining elemets maps into abc2 and abc3 turs into "abc" and "abc"
+   
+### Parallel Streams
+* By Default Stream Operations in Java is processed sequentially unless explicitly specified as parallel
+* We can convert a sequential stream to parallel by adding the parallel method
+* UseCase -> A Sequential stream can be converted to a prarallel one when we have actual performance requirements.Given those requirements we should first run a  performance measurement and them consider parallelism.
+
+  ```
+  List<Integer> listofNumbers = Arrays.asList(1,2,3,4);
+  listOfNumbers.prarallelStream().forEach(number -> System.out.println(number of " '+ thread.currentThread().getName());
+  ```
+  
+   
     

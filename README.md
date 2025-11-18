@@ -49,6 +49,7 @@ public static void main (String [] args){
   - It is used to decide what stays in the pipeline
   - Streams automatically appply without creating a copy in the collection
   - A Typical use of the Predicate lambda is to filter a collection of values.
+  - contains an internal function of test(T,t) that checks isEqual or other Operations.
 ```
 List<String> names= Arrays.asList("Angela","Aaron","Bob","Clarie");
 
@@ -77,6 +78,8 @@ List<string> namesWithA  = names.stream()
 * <b> Function </b> -> Takes one input and returns a result.
   - Deals with Transform logic
   - Used in Map(),flatMap() and collect()
+  - consist and Internal method of apply()
+    
  
 * <b>Operators</b>
  - Operators are special cases of a function that recieves and returns the same value type. The Unary operator interface recives a single argument.

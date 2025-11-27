@@ -222,5 +222,19 @@ String result= valueOpt.orElseThrow(CustomException::new).toUpperCase(); /
   listOfNumbers.prarallelStream().forEach(number -> System.out.println(number of " '+ thread.currentThread().getName());
   ```
   
-   
+   ### Query Ootimization Basics
+  * <ins>Statistics</ins> about the postgress data table can be used with <ins>pg_stats</ins>
+  * <ins>Indexes</ins> ->
+    - We can chooose to create indexes in the table that make us fetch results in a very efficient manner than at a minute scale.
+    - It is not always neccessary that INDEX creation is the most idealist way of storing data as creating an INDEX in a table is a heay task in its self.
+    - If an index is used but it demands that every character is being utlized or scanned through the use of INDEX leaves no great implication.
+  * <ins>Join Algorithms</ins> ->
+    - Nested Loop Join
+    - Hash Join
+    - Merge Join
+ * <ins> Caching </ins> -> Cahching helps use overcome an overhead threasold cost, which helps in some form to reduce the memory utlization for frequently scanned data
+ * 
+    - Merge Join
+  * Caching - Caching of some data helps in, saving some time during frequent memory bits that eventually leads to less memory utlization
+  * 
     

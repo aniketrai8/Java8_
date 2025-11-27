@@ -236,5 +236,17 @@ String result= valueOpt.orElseThrow(CustomException::new).toUpperCase(); /
  * 
     - Merge Join
   * Caching - Caching of some data helps in, saving some time during frequent memory bits that eventually leads to less memory utlization
-  * 
+  * <ins>Executor</ins> -> EXPLAIN ANAYSE SELECT *
+
+### Query Optimization  
+* Add the RIGHT Index
+  - WHERE
+  - JOIN
+  - ORDER BY
+  - GROUP BY
+* Avoid SELCT *
+  - Do not fetch un needed SELECT columns
+* <ins>USING LIMIT </ins>
+ - Using Limiting is a good option with fetching QUERIES
+
     
